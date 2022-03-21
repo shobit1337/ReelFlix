@@ -1,5 +1,5 @@
-import { Response } from "miragejs";
-import { requiresAuth } from "../utils/authUtils";
+import { Response } from 'miragejs';
+import { requiresAuth } from '../utils/authUtils';
 
 /**
  * All the routes related to Liked Videos are present here.
@@ -19,7 +19,7 @@ export const getLikedVideosHandler = function (schema, request) {
         404,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ['The email you entered is not Registered. Not Found error'],
         }
       );
     }
@@ -50,7 +50,7 @@ export const addItemToLikedVideos = function (schema, request) {
         409,
         {},
         {
-          errors: ["The video is already in your liked videos"],
+          errors: ['The video is already in your liked videos'],
         }
       );
     }
@@ -61,7 +61,7 @@ export const addItemToLikedVideos = function (schema, request) {
     404,
     {},
     {
-      errors: ["The email you entered is not Registered. Not Found error"],
+      errors: ['The email you entered is not Registered. Not Found error'],
     }
   );
 };
@@ -82,6 +82,6 @@ export const removeItemFromLikedVideos = function (schema, request) {
   return new Response(
     404,
     {},
-    { errors: ["The user you request does not exist. Not Found error."] }
+    { errors: ['The user you request does not exist. Not Found error.'] }
   );
 };
