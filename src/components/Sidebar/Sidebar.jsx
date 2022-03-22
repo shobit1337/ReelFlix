@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PrivateLink } from '../../routing';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -9,18 +10,18 @@ const Sidebar = () => {
         <Link to='/'>
           <li>🏠 Home</li>
         </Link>
-        <Link to='/playlist'>
+        <PrivateLink to='/playlist'>
           <li>🎦 Playlist</li>
-        </Link>
-        <Link to='/likes'>
+        </PrivateLink>
+        <PrivateLink to='/likes'>
           <li>🧡 Liked Videos</li>
-        </Link>
-        <Link to='/watch-later'>
+        </PrivateLink>
+        <PrivateLink to='/watch-later'>
           <li>⏲ Watch Later</li>
-        </Link>
-        <Link to='/history'>
+        </PrivateLink>
+        <PrivateLink to='/history'>
           <li>⏳ History</li>
-        </Link>
+        </PrivateLink>
       </ul>
     </aside>
   );
