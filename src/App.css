@@ -33,3 +33,31 @@
   color: var(--light-color);
   padding-bottom: 1rem;
 }
+
+/* Authentication */
+.auth-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 20rem;
+  text-align: center;
+}
+
+.auth-card img {
+  max-width: 20%;
+  align-self: center;
+}
+
+.auth-card .input-text {
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  padding: var(--space-xs);
+  border: 1px solid var(--dark-lighter);
+  outline: none;
+  color: var(--dark-lightest);
+  flex-grow: 1;
+}
+
+.link {
+  color: var(--secondary-color);
+}
