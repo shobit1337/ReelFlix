@@ -1,0 +1,9 @@
+.listing-section {
+  width: 100%;
+}
+
+.listing-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}

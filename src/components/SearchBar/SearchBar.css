@@ -1,0 +1,16 @@
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--light-color);
+}
+
+.input-group > .input-field {
+  /* background-color: none; */
+  color: var(--light-color);
+  border: none;
+  outline: none;
+}

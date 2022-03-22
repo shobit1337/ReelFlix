@@ -1,0 +1,55 @@
+.video-card {
+  display: flex;
+  position: relative;
+  min-width: 250px;
+  max-width: 250px;
+  height: auto;
+  background-color: #22241b;
+  color: var(--light-color);
+}
+
+.video-card > .action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: absolute;
+  z-index: 2;
+  right: 0.2rem;
+  top: 0.2rem;
+}
+
+.action-container > .action-btn {
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  background-color: var(--dark-color);
+  opacity: 0.8;
+  color: var(--light-color);
+}
+
+.video-card > .footer {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: var(--dark-color);
+  opacity: 0.8;
+  color: var(--light-color);
+  font-size: 0.8rem;
+}
+
+.video-thumbnail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-thumbnail > .card-play {
+  position: absolute;
+  opacity: 0;
+}
+
+.video-thumbnail:hover .card-play {
+  opacity: 1;
+}

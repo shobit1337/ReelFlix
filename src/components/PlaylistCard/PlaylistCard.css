@@ -1,0 +1,16 @@
+.playlist-card {
+  background-color: var(--gray-color);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  color: var(--light-color);
+  padding: var(--space-sm);
+}
+
+.playlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
