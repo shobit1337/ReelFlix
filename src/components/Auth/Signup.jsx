@@ -84,7 +84,7 @@ const Signup = () => {
         </button>
 
         <span>
-          Have a Gamotore Account?{' '}
+          Have a ReelFlix Account?{' '}
           <Link to='/login' className='text-light'>
             Sign In
           </Link>

@@ -65,7 +65,7 @@ const Login = () => {
         </Link>
       </span>
       <span>
-        Don't have a Gamotore Account?{' '}
+        Don't have a ReelFlix Account?{' '}
         <Link to='/signup' className='link'>
           Sign Up
         </Link>
