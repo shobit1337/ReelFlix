@@ -6,10 +6,10 @@ const VideoCard = () => {
     <div className='video-card'>
       <div className='action-container'>
         <span className='action-btn'>
-          <i class='fas fa-plus-circle'></i>
+          <i className='fas fa-plus-circle'></i>
         </span>
         <span className='action-btn'>
-          <i class='far fa-clock'></i>
+          <i className='far fa-clock'></i>
         </span>
       </div>
       <div className='video-thumbnail'>

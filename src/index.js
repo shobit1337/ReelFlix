@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AuthProvider } from './context/auth-context';
 import Routes from './Routes';
 import { makeServer } from './server';
 
@@ -8,7 +9,9 @@ makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
