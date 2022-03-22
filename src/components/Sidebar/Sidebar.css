@@ -1,0 +1,13 @@
+.sidebar {
+  min-width: 10rem;
+  max-width: 10rem;
+  padding: 1rem 0;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 0.5rem 0.5rem;
+}

@@ -1,0 +1,35 @@
+:root {
+  --primary-color: #320349;
+  --secondary-color: #ecbc0a;
+  /* --accient-color: */
+  --dark-color: #191819;
+  --gray-color: #383838;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  /* background-color: #090c02; */
+}
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+.main-section {
+  max-width: calc(100% - 10rem);
+  height: 100%;
+  padding: 1.5rem 1rem;
+}
+.section-title {
+  color: var(--secondary-color);
+}
+
+.section-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 2rem;
+  color: var(--light-color);
+  padding-bottom: 1rem;
+}
