@@ -42,12 +42,14 @@ const Login = () => {
       <input
         className='input-text'
         type='email'
+        name='email'
         ref={email}
         placeholder='Email'
       />
       <input
         className='input-text'
         type='password'
+        name='password'
         ref={password}
         placeholder='Password'
       />

@@ -16,6 +16,10 @@ const Routes = () => {
         <Route>
           <Route path='/' element={<App />}>
             <Route index element={<HomePage />} />
+            <Route
+              path='browse'
+              element={<ListingPage title={'Watch Now'} />}
+            />
             <Route element={<PrivateRoute />}>
               <Route
                 path='history'
@@ -26,10 +30,6 @@ const Routes = () => {
                 element={<ListingPage title={'Your Liked Videos'} />}
               />
               <Route path='playlist' element={<PlaylistPage />} />
-              <Route
-                path='browse'
-                element={<ListingPage title={'Watch Now'} />}
-              />
               <Route
                 path='watch-later'
                 element={<ListingPage title={'Your watch later list'} />}

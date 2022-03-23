@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AuthProvider } from './context/auth-context';
+import { PlaylistsProvider } from './context/playlist-context';
 import Routes from './Routes';
 import { makeServer } from './server';
 
@@ -10,7 +11,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <Routes />
+      <PlaylistsProvider>
+        <Routes />
+      </PlaylistsProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
