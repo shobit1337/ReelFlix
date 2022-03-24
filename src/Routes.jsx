@@ -5,49 +5,51 @@ import {
   Routes as RouterContainer,
   Route,
 } from 'react-router-dom';
-import { HomePage, ListingPage, PlaylistPage } from './pages';
+import {
+  HistoryPage,
+  HomePage,
+  LikesPage,
+  ListingPage,
+  PlaylistPage,
+} from './pages';
 import { PrivateRoute } from './routing';
 import { ForgotPassword, Login, Modal, Signup } from './components';
+import Mockman from 'mockman-js';
+import PlaylistList from './pages/PlaylistPage/components/PlaylistList/PlaylistList';
+import PlaylistView from './pages/PlaylistPage/components/PlaylistView/PlaylistView';
 
-const Routes = () => {
-  return (
+const Routes = () => (
+  <>
     <BrowserRouter>
       <RouterContainer>
-        <Route>
-          <Route path='/' element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route
-              path='browse'
-              element={<ListingPage title={'Watch Now'} />}
-            />
-            <Route element={<PrivateRoute />}>
-              <Route
-                path='history'
-                element={<ListingPage title={'Watch History'} />}
-              />
-              <Route
-                path='likes'
-                element={<ListingPage title={'Your Liked Videos'} />}
-              />
-              <Route path='playlist' element={<PlaylistPage />} />
-              <Route
-                path='watch-later'
-                element={<ListingPage title={'Your watch later list'} />}
-              />
+        <Route path='/' element={<App />}>
+          <Route index element={<HomePage />} />
+
+          <Route path='browse' element={<ListingPage />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path='history' element={<HistoryPage />} />
+            <Route path='likes' element={<LikesPage />} />
+            <Route path='watch-later' element={<ListingPage />} />
+
+            <Route path='playlist' element={<PlaylistPage />}>
+              <Route index element={<PlaylistList />} />
+              <Route path=':playlistId' element={<PlaylistView />} />
             </Route>
-            <Route element={<PrivateRoute authRoute={true} />}>
-              <Route element={<Modal />}>
-                <Route path='login' element={<Login />} />
-                <Route path='signup' element={<Signup />} />
-                <Route path='forgot-password' element={<ForgotPassword />} />
-              </Route>
+          </Route>
+
+          <Route element={<PrivateRoute authRoute={true} />}>
+            <Route element={<Modal />}>
+              <Route path='login' element={<Login />} />
+              <Route path='signup' element={<Signup />} />
+              <Route path='forgot-password' element={<ForgotPassword />} />
             </Route>
           </Route>
         </Route>
-        <Route />
+        <Route path='mockman' element={<Mockman />} />
       </RouterContainer>
     </BrowserRouter>
-  );
-};
+  </>
+);
 
 export default Routes;

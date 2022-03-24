@@ -1,0 +1,9 @@
+.playlist-video-card {
+  position: relative;
+}
+
+.delete-video-btn {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+}

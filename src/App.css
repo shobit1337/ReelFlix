@@ -1,15 +1,14 @@
 :root {
   --primary-color: #320349;
   --secondary-color: #ecbc0a;
-  /* --accient-color: */
   --dark-color: #191819;
   --gray-color: #383838;
+  --danger-color: #ed1c24;
 }
 
 .App {
   min-height: 100vh;
   background-color: var(--dark-color);
-  /* background-color: #090c02; */
 }
 .main {
   display: flex;
@@ -18,6 +17,7 @@
 }
 .main-section {
   max-width: calc(100% - 10rem);
+  min-width: calc(100% - 10rem);
   height: 100%;
   padding: 1.5rem 1rem;
 }
@@ -60,4 +60,53 @@
 
 .link {
   color: var(--secondary-color);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Disabled Button */
+button:disabled,
+button:disabled:hover {
+  opacity: 0.5;
+  cursor: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  color: var(--light-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+.btn:hover,
+.btn-primary:focus,
+.btn:focus {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  opacity: 0.8;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--secondary-color);
+  opacity: 0.8;
+}
+
+.btn-danger {
+  color: var(--light-color);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+  opacity: 0.8;
+}
+
+.auth-card .input-text {
+  min-width: var(--space-md);
 }

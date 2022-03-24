@@ -1,0 +1,24 @@
+.playlist-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: var(--space-sm) 0;
+  border-bottom: 1px solid var(--dark-light);
+}
+
+.playlist-list-item {
+  padding: var(--space-xs);
+  background-color: transparent;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+  width: 100%;
+  border: 1px solid var(--dark-light);
+}
+
+.playlist-list-item:hover {
+  opacity: 0.8;
+}

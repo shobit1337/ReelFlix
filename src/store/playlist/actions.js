@@ -20,6 +20,7 @@ export const getAllPlaylists = async (dispatch, token) => {
       dispatch({ type: GET_ALL_PLAYLIST, payload: data.playlists });
       return data.playlists;
     }
+    dispatch({ type: GET_ALL_PLAYLIST, payload: [] });
     return [];
   } catch (err) {
     throw new Error('Failed to get Playlist.');
@@ -27,7 +28,6 @@ export const getAllPlaylists = async (dispatch, token) => {
 };
 
 export const createPlaylist = async (dispatch, token, playlist) => {
-  // console.log('playlist: ', playlist, ', token: ', token);
   try {
     let { data } = await axios.post(
       `${API_URL}/user/playlists`,
@@ -36,7 +36,6 @@ export const createPlaylist = async (dispatch, token, playlist) => {
         headers: { authorization: token },
       }
     );
-    console.log('Resonse Data: ', data.playlists);
     if (data.playlists) {
       dispatch({ type: CREATE_PLAYLIST, payload: data.playlists });
       return data.playlists;
@@ -93,6 +92,7 @@ export const addToPlaylist = async (dispatch, token, playlistId, video) => {
       dispatch({ type: ADD_TO_PLAYLIST, payload: data.playlist });
       return data.playlist;
     }
+    dispatch({ type: ADD_TO_PLAYLIST, payload: [] });
     return [];
   } catch (err) {
     throw new Error('Failed to add to playlist.');
@@ -106,15 +106,15 @@ export const deleteFromPlaylist = async (
   videoId
 ) => {
   try {
-    let { data } = await axios.get(
+    let { data } = await axios.delete(
       `${API_URL}/user/playlists/${playlistId}/${videoId}`,
       {
         headers: { authorization: token },
       }
     );
-    if (data.playlists) {
-      dispatch({ type: DELETE_FROM_PLAYLIST, payload: data.playlists });
-      return data.playlists;
+    if (data.playlist) {
+      dispatch({ type: DELETE_FROM_PLAYLIST, payload: data.playlist });
+      return data.playlist;
     }
     return [];
   } catch (err) {
