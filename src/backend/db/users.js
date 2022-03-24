@@ -14,7 +14,7 @@ export const users = [
     password: 'test',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    playlist: [],
+    playlists: [],
     liked: [],
     history: [],
     watchLater: [],
@@ -27,17 +27,7 @@ export const users = [
     password: 'test',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    playlist: [
-      {
-        playlistName: 'Neog Picks',
-        videos: [
-          {
-            _id: 'ab3babf0-1efc-4086-aa19-4dc7ed4f0b41',
-            addedAt: formatDate(),
-          },
-        ],
-      },
-    ],
+    playlists: [],
     liked: [
       { _id: 'ab3babf0-1efc-4086-aa19-4dc7ed4f0b41' },
       { _id: 'c0b12fe9-80c6-4247-8ea8-3e10aa3df0fc' },
@@ -57,7 +47,7 @@ export const users = [
     password: 'test',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    playlist: [],
+    playlists: [],
     liked: [],
     history: [],
     watchLater: [],
@@ -70,7 +60,7 @@ export const users = [
     password: 'test',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    playlist: [],
+    playlists: [],
     liked: [],
     history: [],
     watchLater: [],

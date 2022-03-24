@@ -14,7 +14,7 @@ const ForgotPassword = () => {
         id='email'
         placeholder='Email'
       />
-      <button className='btn btn-rounded text-light'>RESET</button>
+      <button className='btn btn-secondary text-light'>RESET</button>
       <span>
         Have an account?
         <Link to='/login' className='link'>

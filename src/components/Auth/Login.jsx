@@ -24,6 +24,19 @@ const Login = () => {
     }
   };
 
+  const handleDemoLogin = async () => {
+    try {
+      let response = await loginUser(dispatchAuth, {
+        email: 'test@test.com',
+        password: 'test',
+      });
+      if (!response?.foundUser) throw Error('No User Found');
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const showError = (error) => {
     if (error) {
       return (
@@ -57,8 +70,11 @@ const Login = () => {
         <input type='checkbox' name='remember-me' id='remember-me' />
         <span>Remember me</span>
       </span>
-      <button className='btn btn-rounded text-light' onClick={handleLogin}>
+      <button className='btn btn-secondary text-light' onClick={handleLogin}>
         Sign In
+      </button>
+      <button className='btn btn-primary text-light' onClick={handleDemoLogin}>
+        Demo Login
       </button>
       <span>
         Forgot your password?{' '}

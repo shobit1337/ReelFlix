@@ -33,6 +33,7 @@ import {
   removeVideoFromPlaylistHandler,
 } from './backend/controllers/PlaylistController';
 import { users } from './backend/db/users';
+import { playlists } from './backend/db/playlists';
 export function makeServer({ environment = 'development' } = {}) {
   return new Server({
     serializers: {
@@ -46,7 +47,8 @@ export function makeServer({ environment = 'development' } = {}) {
       user: Model,
       like: Model,
       history: Model,
-      playlist: Model,
+      playlists: Model,
+      watchLater: Model,
     },
 
     // Runs on the start of the server
@@ -61,7 +63,8 @@ export function makeServer({ environment = 'development' } = {}) {
           ...item,
           likes: [],
           history: [],
-          playlists: [],
+          playlists: playlists,
+          watchLater: [],
         })
       );
     },

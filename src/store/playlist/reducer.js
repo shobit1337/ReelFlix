@@ -24,10 +24,18 @@ const playlistsReducer = (state, action) => {
       return [...action.payload];
 
     case ADD_TO_PLAYLIST:
-      return [...state, { ...action.payload }];
+      return state.map((playlist) =>
+        playlist._id === action.payload._id
+          ? { ...playlist, ...action.payload }
+          : playlist
+      );
 
     case DELETE_FROM_PLAYLIST:
-      return state.filter((playlist) => playlist._id !== action.payload._id);
+      return state.map((playlist) =>
+        playlist._id === action.payload._id
+          ? { ...playlist, ...action.payload }
+          : playlist
+      );
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
