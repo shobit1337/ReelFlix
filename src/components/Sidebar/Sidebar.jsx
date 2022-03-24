@@ -10,6 +10,9 @@ const Sidebar = () => {
         <Link to='/'>
           <li>🏠 Home</li>
         </Link>
+        <Link to='/browse'>
+          <li>🏠 Browse</li>
+        </Link>
         <PrivateLink to='/playlist'>
           <li>🎦 Playlist</li>
         </PrivateLink>

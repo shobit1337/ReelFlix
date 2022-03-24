@@ -9,7 +9,6 @@
 }
 
 .input-group > .input-field {
-  /* background-color: none; */
   color: var(--light-color);
   border: none;
   outline: none;

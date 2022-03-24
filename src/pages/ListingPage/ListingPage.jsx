@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ListingPage.css';
 import VideoCard from '../../components/VideoCard/VideoCard';
+import { getAllVideos } from '../../utils/videos';
 
-const ListingPage = ({ title = 'Listing Page' }) => {
+const ListingPage = () => {
+  const [videoList, setVideoList] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      let data = await getAllVideos();
+      setVideoList(data);
+    })();
+    return () => {
+      setVideoList([]);
+    };
+  }, []);
+
   return (
     <div className='listing-section'>
-      <h3 className='section-title'>{title}</h3>
+      <h3 className='section-title'>Browser Movies</h3>
       <header className='section-header'>
         <span>Sort by: Date Added</span>
         <span>Filter: Date Added</span>
       </header>
       <div className='listing-container'>
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {videoList.map((video) => (
+          <VideoCard key={video._id} video={video} />
+        ))}
       </div>
     </div>
   );
