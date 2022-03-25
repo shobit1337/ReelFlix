@@ -73,7 +73,7 @@ export const getPlaylist = async (dispatch, token, playlistId) => {
       dispatch({ type: GET_PLAYLIST, payload: data.playlist });
       return data.playlist;
     }
-    return [];
+    return null;
   } catch (err) {
     throw new Error('Failed to get playlist.');
   }

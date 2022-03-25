@@ -14,7 +14,7 @@ const PlaylistView = () => {
   const { playlistId } = useParams();
   const { user } = useAuth();
   const { dispatchPlaylists } = usePlaylists();
-  const [playlist, setPlaylist] = useState({});
+  const [playlist, setPlaylist] = useState(null);
   const navigate = useNavigate();
 
   const handleDeletePlaylist = async () => {
@@ -39,12 +39,15 @@ const PlaylistView = () => {
         user.encodedToken,
         playlistId
       );
-      setPlaylist(data);
+      if (data) {
+        setPlaylist(data);
+      } else {
+        navigate('/playlist');
+      }
     })();
-  }, [dispatchPlaylists, playlistId, user]);
-
-  return (
-    <div>
+  }, [dispatchPlaylists, playlistId, user, navigate]);
+  return playlist ? (
+    <>
       <header
         className='d-flex justify-between my-md'
         style={{ width: '100%' }}>
@@ -73,7 +76,9 @@ const PlaylistView = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
+  ) : (
+    <></>
   );
 };
 
