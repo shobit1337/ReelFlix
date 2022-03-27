@@ -54,17 +54,14 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     const { video } = JSON.parse(request.requestBody);
-    if (user.history.some((item) => item.id === video.id)) {
-      return new Response(
-        409,
-        {},
-        {
-          errors: ['The video is already in your history'],
-        }
-      );
-    }
-    user.history.push(video);
-    return new Response(201, {}, { history: user.history });
+    // Remove Video if already present and push it to front
+    const filteredHistory = user.history.filter(
+      (item) => item._id !== video._id
+    );
+    filteredHistory.push(video);
+    this.db.users.update({ history: filteredHistory });
+
+    return new Response(201, {}, { history: filteredHistory });
   } catch (error) {
     return new Response(
       500,

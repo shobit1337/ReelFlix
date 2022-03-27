@@ -5,6 +5,7 @@ import { getVideo } from '../../utils/videos';
 import { MoreVideos } from './components';
 import { useAuth } from '../../context/auth-context';
 import { SelectPlaylist } from '../../components';
+import { setHistory } from '../../utils/history';
 
 const VideoPage = () => {
   const { videoId } = useParams();
@@ -43,11 +44,14 @@ const VideoPage = () => {
       let data = await getVideo(videoId);
       if (data._id) {
         setVideoDetails({ ...data });
+        if (user.userDetails) {
+          setHistory(user.encodedToken, data);
+        }
       } else {
         navigate('/');
       }
     })();
-  }, [videoId, navigate]);
+  }, [videoId, navigate, user]);
 
   return (
     <>
