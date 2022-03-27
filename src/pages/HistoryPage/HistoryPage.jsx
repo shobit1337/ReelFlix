@@ -18,7 +18,7 @@ const HistoryPage = () => {
 
   const handleDeleteFromHistory = async (videoId) => {
     let updatedHistory = await deleteHistory(user.encodedToken, videoId);
-    setVideoList(updatedHistory);
+    setVideoList([...updatedHistory].reverse());
   };
 
   useEffect(() => {
