@@ -1,0 +1,29 @@
+.video-page-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  min-width: 100%;
+}
+
+.video-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--space-md);
+}
+
+.more-video-section {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  flex-grow: 1;
+  margin: 0 var(--space-md);
+}
+
+.video-iframe {
+  /* Original Styles commented for testing */
+  /* height: 60rem; */
+  /* max-height: 70vh; */
+  max-width: 100%;
+  aspect-ratio: 1.77;
+}

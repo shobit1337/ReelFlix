@@ -6,6 +6,8 @@ export { default as PlaylistCard } from './PlaylistCard/PlaylistCard';
 export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as VideoCard } from './VideoCard/VideoCard';
 export { default as Modal } from './Modal/Modal';
+export { default as CreatePlaylist } from './CreatePlaylist/CreatePlaylist';
+export { default as SelectPlaylist } from './SelectPlaylist/SelectPlaylist';
 
 export { default as ForgotPassword } from './Auth/ForgotPassword';
 export { default as Login } from './Auth/Login';

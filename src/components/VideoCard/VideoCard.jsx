@@ -43,7 +43,9 @@ const VideoCard = ({ video }) => {
           style={{ minWidth: '250px', minHeight: '150px' }}
         />
       </div>
-      <div className='footer p-xxxxs pt-0'>
+      <div
+        className='footer p-xxxxs pt-0'
+        onClick={() => navigate(`/video/${_id}`)}>
         <div className='title'>{title}</div>
         <span>By: {creator}</span>
         <div className='d-flex justify-between'>
