@@ -17,6 +17,7 @@ import { ForgotPassword, Login, Modal, Signup } from './components';
 import Mockman from 'mockman-js';
 import PlaylistList from './pages/PlaylistPage/components/PlaylistList/PlaylistList';
 import PlaylistView from './pages/PlaylistPage/components/PlaylistView/PlaylistView';
+import VideoPage from './pages/VideoPage/VideoPage';
 
 const Routes = () => (
   <>
@@ -26,6 +27,7 @@ const Routes = () => (
           <Route index element={<HomePage />} />
 
           <Route path='browse' element={<ListingPage />} />
+          <Route path='video/:videoId' element={<VideoPage />} />
 
           <Route element={<PrivateRoute />}>
             <Route path='history' element={<HistoryPage />} />
