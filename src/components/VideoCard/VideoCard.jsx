@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth-context';
+import { getWatchLater, addWatchLater } from '../../utils/watchLater';
 import SelectPlaylist from '../SelectPlaylist/SelectPlaylist';
 import './VideoCard.css';
 
@@ -8,6 +9,7 @@ const VideoCard = ({ video }) => {
   const { _id, views, likes, creator, title } = video;
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isWatchLater, setIsWatchLater] = useState(null);
 
   const [isSelectPlaylistModalOpen, setIsSelectPlaylistModalOpen] =
     useState(false);
@@ -19,28 +21,46 @@ const VideoCard = ({ video }) => {
     setIsSelectPlaylistModalOpen(true);
   };
 
-  const handleAddToWatchLater = () => {
+  const handleAddToWatchLater = async () => {
     if (!user.userDetails) {
       navigate('/login');
     }
+    const data = await addWatchLater(user.encodedToken, video);
+    if (data) {
+      setIsWatchLater(true);
+    }
   };
+
+  useEffect(() => {
+    (async () => {
+      const response = await getWatchLater(user.encodedToken);
+      if (response?.some((vid) => vid._id === _id)) {
+        setIsWatchLater(true);
+      }
+    })();
+  }, [_id, user]);
 
   return (
     <div className='video-card'>
       <div className='action-container'>
-        <span className='action-btn' onClick={handleAddToPlaylist}>
+        <span
+          className='action-btn cursor-pointer'
+          onClick={handleAddToPlaylist}>
           <i className='fas fa-plus-circle'></i>
         </span>
-        <span className='action-btn' onClick={handleAddToWatchLater}>
-          <i className='far fa-clock'></i>
-        </span>
+        {!isWatchLater && (
+          <span
+            className='action-btn cursor-pointer'
+            onClick={handleAddToWatchLater}>
+            <i className='far fa-clock'></i>
+          </span>
+        )}
       </div>
       <div className='video-thumbnail'>
         <img
           src={`https://picsum.photos/seed/${_id}/250/150`}
           alt='video-thumbnail'
-          loading='eager'
-          style={{ minWidth: '250px', minHeight: '150px' }}
+          loading='lazy'
         />
       </div>
       <div

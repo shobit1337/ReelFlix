@@ -19,7 +19,7 @@ const PlaylistView = () => {
 
   const handleDeletePlaylist = async () => {
     await deletePlaylist(dispatchPlaylists, user.encodedToken, playlistId);
-    navigate('playlist');
+    navigate('/playlist');
   };
 
   const handleRemoveFromPlaylist = async (videoId) => {

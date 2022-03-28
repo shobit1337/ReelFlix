@@ -18,6 +18,7 @@ import Mockman from 'mockman-js';
 import PlaylistList from './pages/PlaylistPage/components/PlaylistList/PlaylistList';
 import PlaylistView from './pages/PlaylistPage/components/PlaylistView/PlaylistView';
 import VideoPage from './pages/VideoPage/VideoPage';
+import WatchLaterPage from './pages/WatchLaterPage/WatchLaterPage';
 
 const Routes = () => (
   <>
@@ -31,8 +32,8 @@ const Routes = () => (
 
           <Route element={<PrivateRoute />}>
             <Route path='history' element={<HistoryPage />} />
+            <Route path='watch-later' element={<WatchLaterPage />} />
             <Route path='likes' element={<LikesPage />} />
-            <Route path='watch-later' element={<ListingPage />} />
 
             <Route path='playlist' element={<PlaylistPage />}>
               <Route index element={<PlaylistList />} />

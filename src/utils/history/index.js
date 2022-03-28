@@ -26,7 +26,6 @@ export const setHistory = async (token, video) => {
     if (data.history) return data.history;
     return [];
   } catch (err) {
-    console.log('Error: ', err);
     throw new Error('Failed to add to history.');
   }
 };
