@@ -6,12 +6,14 @@ import { MoreVideos } from './components';
 import { useAuth } from '../../context/auth-context';
 import { SelectPlaylist } from '../../components';
 import { setHistory } from '../../utils/history';
+import { addWatchLater } from '../../utils/watchLater';
 
 const VideoPage = () => {
   const { videoId } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [videoDetails, setVideoDetails] = useState({});
+  const [isWatchLater, setIsWatchLater] = useState(null);
 
   const handleLike = () => {
     //TODO: Like Functionality
@@ -33,9 +35,13 @@ const VideoPage = () => {
     }
     setIsSelectPlaylistModalOpen(true);
   };
-  const handleAddToWatchLater = () => {
+  const handleAddToWatchLater = async () => {
     if (!user.userDetails) {
       navigate('/login');
+    }
+    const data = await addWatchLater(user.encodedToken, videoDetails);
+    if (data) {
+      setIsWatchLater(true);
     }
   };
 
@@ -93,11 +99,17 @@ const VideoPage = () => {
                       className='cursor-pointer'>
                       <i className='fas fa-plus-circle'></i> ADD TO PLAYLIST
                     </span>
+                    {isWatchLater ? (
+                      <span className='text-dark-lighter'>
+                        <i className='far fa-clock'></i> WATCH LATER
+                      </span>
+                    ) : (
                     <span
                       onClick={handleAddToWatchLater}
                       className='cursor-pointer'>
                       <i className='far fa-clock'></i> WATCH LATER
                     </span>
+                    )}
                   </div>
                 </div>
               </div>

@@ -18,6 +18,11 @@
   top: 0.2rem;
 }
 
+.video-card > .video-thumbnail > img {
+  min-width: 250px;
+  min-height: 150px;
+}
+
 .action-container > .action-btn {
   padding: 2px;
   border-radius: var(--radius-sm);
