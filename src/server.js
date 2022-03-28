@@ -25,6 +25,11 @@ import {
   removeItemFromLikedVideos,
 } from './backend/controllers/LikeController';
 import {
+  getDislikedVideosHandler,
+  addItemToDislikedVideos,
+  removeItemFromDislikedVideos,
+} from './backend/controllers/DislikeController';
+import {
   getWatchLaterVideosHandler,
   addVideoToWatchLaterHandler,
   removeVideoFromWatchLaterHandler,
@@ -52,6 +57,7 @@ export function makeServer({ environment = 'development' } = {}) {
       category: Model,
       user: Model,
       like: Model,
+      dislike: Model,
       history: Model,
       playlists: Model,
       watchLater: Model,
@@ -95,6 +101,14 @@ export function makeServer({ environment = 'development' } = {}) {
       this.get('/user/likes', getLikedVideosHandler.bind(this));
       this.post('/user/likes', addItemToLikedVideos.bind(this));
       this.delete('/user/likes/:videoId', removeItemFromLikedVideos.bind(this));
+
+      // dislikes routes (private)
+      this.get('/user/dislikes', getDislikedVideosHandler.bind(this));
+      this.post('/user/dislikes', addItemToDislikedVideos.bind(this));
+      this.delete(
+        '/user/dislikes/:videoId',
+        removeItemFromDislikedVideos.bind(this)
+      );
 
       // playlist routes (private)
       this.get('/user/playlists', getAllPlaylistsHandler.bind(this));
