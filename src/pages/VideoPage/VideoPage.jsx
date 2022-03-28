@@ -104,11 +104,11 @@ const VideoPage = () => {
                         <i className='far fa-clock'></i> WATCH LATER
                       </span>
                     ) : (
-                    <span
-                      onClick={handleAddToWatchLater}
-                      className='cursor-pointer'>
-                      <i className='far fa-clock'></i> WATCH LATER
-                    </span>
+                      <span
+                        onClick={handleAddToWatchLater}
+                        className='cursor-pointer'>
+                        <i className='far fa-clock'></i> WATCH LATER
+                      </span>
                     )}
                   </div>
                 </div>
