@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './VideoPage.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getVideo } from '../../utils/videos';
-import { MoreVideos } from './components';
+import { LikeDislikeSection, MoreVideos } from './components';
 import { useAuth } from '../../context/auth-context';
 import { SelectPlaylist } from '../../components';
 import { setHistory } from '../../utils/history';
@@ -12,12 +12,8 @@ const VideoPage = () => {
   const { videoId } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [videoDetails, setVideoDetails] = useState({});
+  const [videoDetails, setVideoDetails] = useState(null);
   const [isWatchLater, setIsWatchLater] = useState(null);
-
-  const handleLike = () => {
-    //TODO: Like Functionality
-  };
 
   const getDate = (dateString) => {
     const dateObj = new Date(dateString);
@@ -82,18 +78,7 @@ const VideoPage = () => {
                     <span>{getDate(videoDetails.uploadedAt)}</span>
                   </div>
                   <div className='d-flex gap-md text-sm items-center'>
-                    <span>
-                      <span onClick={handleLike} className='cursor-pointer'>
-                        👍
-                      </span>{' '}
-                      {videoDetails.likes}
-                    </span>
-                    <span>
-                      <span onClick={handleLike} className='cursor-pointer'>
-                        👎
-                      </span>{' '}
-                      {videoDetails.likes}
-                    </span>
+                    <LikeDislikeSection video={videoDetails} />
                     <span
                       onClick={handleAddToPlaylist}
                       className='cursor-pointer'>

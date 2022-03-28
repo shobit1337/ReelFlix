@@ -2,16 +2,16 @@ import { Response } from 'miragejs';
 import { requiresAuth } from '../utils/authUtils';
 
 /**
- * All the routes related to Liked Videos are present here.
+ * All the routes related to Disliked Videos are present here.
  * These are private routes.
  * Client needs to add "authorization" header with JWT token in it to access it.
  * */
 
 /**
- * This handler handles getting videos from user's likes.
- * send GET Request at /api/user/likes
+ * This handler handles getting videos from user's Dislikes.
+ * send GET Request at /api/user/dislikes
  * */
-export const getLikedVideosHandler = function (schema, request) {
+export const getDislikedVideosHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -23,8 +23,8 @@ export const getLikedVideosHandler = function (schema, request) {
         }
       );
     }
-    // Returing User's Likes
-    return new Response(200, {}, { likes: user.likes });
+    // Returing User's Dislikes
+    return new Response(200, {}, { dislikes: user.dislikes });
   } catch (error) {
     return new Response(
       500,
@@ -37,33 +37,33 @@ export const getLikedVideosHandler = function (schema, request) {
 };
 
 /**
- * This handler handles adding videos to user's likes.
- * send POST Request at /api/user/likes
+ * This handler handles adding videos to user's dislikes.
+ * send POST Request at /api/user/dislikes
  * body contains {video}
  * */
 
-export const addItemToLikedVideos = function (schema, request) {
+export const addItemToDislikedVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const { video } = JSON.parse(request.requestBody);
     // check if video present in db
     const foundVideo = this.db.videos.findBy({ _id: video._id });
     if (foundVideo) {
-      if (user.likes.some((item) => item._id === video._id)) {
+      if (user.dislikes.some((item) => item._id === video._id)) {
         return new Response(
           409,
           {},
           {
-            errors: ['The video is already in your liked videos'],
+            errors: ['The video is already in your disliked videos'],
           }
         );
       }
 
-      user.likes.push(video);
-      // Updating Like in Videos DB
-      this.db.videos.update(foundVideo, { likes: foundVideo.likes + 1 });
-      // Returing Video's Likes
-      return new Response(201, {}, { likes: foundVideo.likes + 1 });
+      user.dislikes.push(video);
+      // Updating dislike in Videos DB
+      this.db.videos.update(foundVideo, { dislikes: foundVideo.dislikes + 1 });
+      // Returing Video's dislikes
+      return new Response(201, {}, { dislikes: foundVideo.dislikes + 1 });
     }
     return new Response(
       404,
@@ -83,24 +83,26 @@ export const addItemToLikedVideos = function (schema, request) {
 };
 
 /**
- * This handler handles removing videos from user's likes.
- * send DELETE Request at /api/user/likes/:videoId
+ * This handler handles removing videos from user's dislikes.
+ * send DELETE Request at /api/user/dislikes/:videoId
  * */
 
-export const removeItemFromLikedVideos = function (schema, request) {
+export const removeItemFromDislikedVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const videoId = request.params.videoId;
     const foundVideo = this.db.videos.findBy({ _id: videoId });
     if (foundVideo) {
-      const filteredLikes = user.likes.filter((item) => item._id !== videoId);
+      const filteredDislikes = user.dislikes.filter(
+        (item) => item._id !== videoId
+      );
 
-      // Updating Likes in Users
-      this.db.users.update({ likes: filteredLikes });
-      // Updating Likes in Videos DB
-      this.db.videos.update(foundVideo, { likes: foundVideo.likes - 1 });
-      // Returing Video's Likes
-      return new Response(200, {}, { likes: foundVideo.likes - 1 });
+      // Updating dislikes in Users
+      this.db.users.update({ dislikes: filteredDislikes });
+      // Updating dislikes in Videos DB
+      this.db.videos.update(foundVideo, { dislikes: foundVideo.dislikes - 1 });
+      // Returing Video's dislikes
+      return new Response(200, {}, { dislikes: foundVideo.dislikes - 1 });
     }
     return new Response(
       404,
