@@ -1,8 +1,9 @@
 .video-card {
   display: flex;
   position: relative;
-  min-width: 500px;
+  min-width: 600px;
   max-width: 500px;
+  max-width: 80vw;
   height: auto;
   background-color: #22241b;
   color: var(--light-color);
