@@ -58,7 +58,7 @@ const VideoCard = ({ video }) => {
       </div>
       <div className='video-thumbnail'>
         <img
-          src={`https://picsum.photos/seed/${_id}/250/150`}
+          src={`https://i.ytimg.com/vi/${video.videoId}/0.jpg`}
           alt='video-thumbnail'
           loading='lazy'
         />
