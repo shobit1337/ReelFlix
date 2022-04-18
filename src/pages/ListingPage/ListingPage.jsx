@@ -47,7 +47,6 @@ const ListingPage = () => {
         setLoading(true);
         await setTimeout(() => {
           data = getPaginatedVideos(videoList, page, 3);
-          console.log(data);
           setList([...new Set([...list, ...data.list])]);
           setPageInfo(data.info);
           setLoading(false);

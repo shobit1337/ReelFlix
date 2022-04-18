@@ -41,7 +41,7 @@ export const ListingVideoCard = ({ video }) => {
   }, [_id, user]);
 
   return (
-    <div className='video-card'>
+    <div className='video-listing-card'>
       <div className='action-container'>
         <span
           className='action-btn cursor-pointer'

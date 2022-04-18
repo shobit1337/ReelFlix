@@ -1,9 +1,7 @@
 .video-card {
   display: flex;
   position: relative;
-  min-width: 500px;
-  max-width: 500px;
-  height: auto;
+  max-width: 250px;
   background-color: #22241b;
   color: var(--light-color);
 }
@@ -18,7 +16,12 @@
   top: 0.2rem;
 }
 
+.video-card > .video-thumbnail {
+  object-fit: cover;
+}
+
 .video-card > .video-thumbnail > img {
+  object-fit: cover;
   min-width: 250px;
   min-height: 150px;
 }

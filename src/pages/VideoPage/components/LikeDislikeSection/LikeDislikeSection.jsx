@@ -9,16 +9,21 @@ import {
   getDislikes,
   getLikes,
 } from '../../../../utils/like-dislike';
+import { useNavigate } from 'react-router-dom';
 
 const LikeDislikeSection = ({ video }) => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [likes, setLikes] = useState(null);
   const [dislikes, setDislikes] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLike = async () => {
+    if (!user?.userDetails) {
+      navigate('/login');
+    }
     setIsLoading(true);
     if (isDisliked) {
       const newDislikes = await deleteDislike(user.encodedToken, video._id);
@@ -36,6 +41,9 @@ const LikeDislikeSection = ({ video }) => {
   };
 
   const handleDislike = async () => {
+    if (!user?.userDetails) {
+      navigate('/login');
+    }
     setIsLoading(true);
     if (isLiked) {
       const newLikes = await deleteLike(user.encodedToken, video._id);
@@ -53,6 +61,9 @@ const LikeDislikeSection = ({ video }) => {
   };
 
   const removeLike = async () => {
+    if (!user?.userDetails) {
+      navigate('/login');
+    }
     setIsLoading(true);
     const newLikes = await deleteLike(user.encodedToken, video._id);
     if (newLikes || newLikes === 0) {
@@ -63,6 +74,9 @@ const LikeDislikeSection = ({ video }) => {
   };
 
   const removeDislike = async () => {
+    if (!user?.userDetails) {
+      navigate('/login');
+    }
     setIsLoading(true);
     const newDislikes = await deleteDislike(user.encodedToken, video._id);
     if (newDislikes || newDislikes === 0) {

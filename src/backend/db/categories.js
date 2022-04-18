@@ -11,6 +11,12 @@ export const categories = [
       'These are types of films known to promote intense excitement, suspense, a high level of anticipation, ultra-heightened expectation, uncertainty, anxiety, and nerve-wracking tension. Thriller and suspense films are virtually synonymous and interchangeable categorizations, with similar characteristics and features.',
   },
   {
+    _id: '046ebe49-6ae6-41hrtssdfd372b5fb',
+    categoryName: 'Action',
+    description:
+      'These are types of films known to promote intense excitement, suspense, a high level of anticipation, ultra-heightened expectation, uncertainty, anxiety, and nerve-wracking tension. Thriller and suspense films are virtually synonymous and interchangeable categorizations, with similar characteristics and features.',
+  },
+  {
     _id: '4cc471ea-09cf-4ec9-a230-c469440a01f0',
     categoryName: 'Fiction',
     description:
