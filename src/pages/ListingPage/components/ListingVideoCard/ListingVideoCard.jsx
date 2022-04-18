@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ListingVideoCard.css';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../context/auth-context';
-import { getWatchLater, addWatchLater } from '../../../utils/watchLater';
-import SelectPlaylist from '../../../components/SelectPlaylist/SelectPlaylist';
+import { useAuth } from '../../../../context/auth-context';
+import { getWatchLater, addWatchLater } from '../../../../utils/watchLater';
+import SelectPlaylist from '../../../../components/SelectPlaylist/SelectPlaylist';
 
-export const ListingVideoCard = ({ video }) => {
+const ListingVideoCard = ({ video }) => {
   const { _id, views, likes, creator, title } = video;
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -82,3 +82,5 @@ export const ListingVideoCard = ({ video }) => {
     </div>
   );
 };
+
+export default ListingVideoCard;

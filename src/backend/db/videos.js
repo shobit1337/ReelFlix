@@ -201,7 +201,6 @@ export const videos = [
     category: ['Action', 'Drama'],
     uploadedAt: formatDate(),
   },
-  // NEW SET
   {
     _id: 'ab3babfresdfsdfsdfqew7easfw0b41',
     title: 'October',
