@@ -20,7 +20,7 @@ const Navbar = () => {
           {user.userDetails ? (
             <>
               <Link to='profile'>
-                <span className='nav-item'>Welcome Shobhit,</span>
+                <span className='nav-item'>Welcome User,</span>
               </Link>
               <span className='nav-item' onClick={(e) => logout(dispatchAuth)}>
                 Logout

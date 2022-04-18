@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './ListingPage.css';
 import { getAllVideos, getPaginatedVideos } from '../../utils/videos';
-import { ListingVideoCard } from './components/ListingVideoCard';
+import { ListingVideoCard, Filters } from './components';
 import Loader from '../../components/Loader/Loader';
 
 const ListingPage = () => {
   const [videoList, setVideoList] = useState([]);
+  const [filteredVideoList, setFilteredVideoList] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [list, setList] = useState([]);
@@ -41,27 +42,29 @@ const ListingPage = () => {
 
   useEffect(() => {
     // Geting Infinite Results
-    if (videoList.length) {
+    if (filteredVideoList?.length) {
       (async () => {
         let data = [];
         setLoading(true);
         await setTimeout(() => {
-          data = getPaginatedVideos(videoList, page, 3);
-          setList([...new Set([...list, ...data.list])]);
+          data = getPaginatedVideos(filteredVideoList, page, 4);
+          setList([...new Set([...data.list])]);
           setPageInfo(data.info);
           setLoading(false);
         }, 1000);
       })();
     }
-  }, [page, videoList]);
+  }, [page, filteredVideoList]);
 
   useEffect(() => {
     (async () => {
       let data = await getAllVideos();
       setVideoList(data);
+      setFilteredVideoList(data);
     })();
     return () => {
       setVideoList([]);
+      setFilteredVideoList([]);
     };
   }, []);
 
@@ -69,8 +72,7 @@ const ListingPage = () => {
     <div className='listing-section'>
       <h3 className='section-title'>Browser Movies</h3>
       <header className='section-header'>
-        <span>Sort by: Date Added</span>
-        <span>Filter: Date Added</span>
+        <Filters list={videoList} setList={setFilteredVideoList} />
       </header>
       <div className='listing-container'>
         {list.length &&
